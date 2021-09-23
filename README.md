@@ -1,6 +1,6 @@
 # BlogAngularNestNx
 
-Blog application made of Angular frontend and NestJS backend.
+Blog application made of Angular fronted and NestJS backend.
 ## Before run project 
 - Configure .env file
 ## Run project
