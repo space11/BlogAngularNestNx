@@ -1,0 +1,65 @@
+<h1 style="text-align: center">Register Page</h1>
+
+<form [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()">
+  <div class="container">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             autocomplete="name"
+             placeholder="Full Name"
+             formControlName="name">
+      <mat-hint *ngIf="registerForm.get('name')?.errors">Full Name is required</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             type="text"
+             autocomplete="username"
+             placeholder="Your Username"
+             formControlName="username">
+      <mat-hint *ngIf="registerForm.get('username')?.errors">Username is required</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             type="email"
+             autocomplete="email"
+             placeholder="Your Email"
+             formControlName="email">
+      <mat-hint *ngIf="registerForm.get('email')?.errors">Email is required</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             type="password"
+             autocomplete="new-password"
+             placeholder="Your Password"
+             formControlName="password">
+      <mat-hint *ngIf="registerForm.get('password')?.errors">Password is required</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             type="password"
+             autocomplete="new-password"
+             placeholder="Confirm your Password"
+             formControlName="passwordConfirm">
+      <mat-hint *ngIf="registerForm.get('passwordConfirm')?.errors">Confirmed password is required</mat-hint>
+    </mat-form-field>
+    <br>
+    <button mat-flat-button
+            color="primary"
+            [disabled]="registerForm.invalid">Register</button>
+  </div>
+</form>
+
+<h3 *ngIf=" registerForm.invalid && (registerForm.touched || registerForm.dirty)">Form contains following errors</h3>
+<small
+       *ngIf="registerForm.get('password')?.hasError('passwordHasNumbersError') && (registerForm.touched || registerForm.dirty)">
+  Password
+  is not containing
+  numbers</small>
+<br>
+<small *ngIf="registerForm.hasError('passwordsNotMatching') && (registerForm.touched || registerForm.dirty)">Passwords
+  not matching</small>
